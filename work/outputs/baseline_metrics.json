@@ -1,0 +1,5 @@
+{
+  "baseline_precision_at_50": 0.52,
+  "total_rows_scored": 30000,
+  "top_reason_code": "page_one_low_ctr"
+}
