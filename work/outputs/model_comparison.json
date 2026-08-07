@@ -1,0 +1,42 @@
+[
+  {
+    "Model / Method": "Baseline Hand Rule",
+    "Precision@20": 0.5,
+    "Precision@50": 0.6,
+    "ROC-AUC": 0.548,
+    "Avg Precision": 0.538,
+    "Base Rate": 0.517
+  },
+  {
+    "Model / Method": "Logistic Regression",
+    "Precision@20": 0.65,
+    "Precision@50": 0.66,
+    "ROC-AUC": 0.54,
+    "Avg Precision": 0.539,
+    "Base Rate": 0.517
+  },
+  {
+    "Model / Method": "Decision Tree (depth=4)",
+    "Precision@20": 0.65,
+    "Precision@50": 0.56,
+    "ROC-AUC": 0.578,
+    "Avg Precision": 0.566,
+    "Base Rate": 0.517
+  },
+  {
+    "Model / Method": "Random Forest",
+    "Precision@20": 0.55,
+    "Precision@50": 0.54,
+    "ROC-AUC": 0.598,
+    "Avg Precision": 0.593,
+    "Base Rate": 0.517
+  },
+  {
+    "Model / Method": "Gradient Boosting",
+    "Precision@20": 0.8,
+    "Precision@50": 0.74,
+    "ROC-AUC": 0.612,
+    "Avg Precision": 0.612,
+    "Base Rate": 0.517
+  }
+]
