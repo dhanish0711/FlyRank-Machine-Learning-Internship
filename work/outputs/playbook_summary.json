@@ -1,0 +1,12 @@
+{
+  "total_inventory_scored": 30000,
+  "action_breakdown": {
+    "no_action_required": 19215,
+    "title_meta_rewrite": 6595,
+    "engagement_ux_optimization": 3501,
+    "performance_monitoring": 673,
+    "comprehensive_content_refresh": 16
+  },
+  "top50_precision_at_50": 0.94,
+  "top_recommended_action": "no_action_required"
+}
