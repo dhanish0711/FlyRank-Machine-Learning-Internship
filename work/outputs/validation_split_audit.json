@@ -1,0 +1,18 @@
+[
+  {
+    "Split Strategy": "1. Naive Random Split (Before)",
+    "Precision@20": 0.9,
+    "Precision@50": 0.82,
+    "ROC-AUC": 0.745,
+    "Avg Precision": 0.753,
+    "Base Rate": 0.542
+  },
+  {
+    "Split Strategy": "2. Honest Client-Holdout (After)",
+    "Precision@20": 0.8,
+    "Precision@50": 0.74,
+    "ROC-AUC": 0.612,
+    "Avg Precision": 0.612,
+    "Base Rate": 0.517
+  }
+]
