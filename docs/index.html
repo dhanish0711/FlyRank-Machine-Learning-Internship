@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Applied Search Intelligence: Prioritizing Content Refresh Opportunities with Honest Machine Learning Models | Research Paper</title>
+  <title>Applied Search Intelligence: Prioritizing Content Refresh Opportunities | Research Paper</title>
   <meta name="description" content="A comprehensive research paper evaluating machine learning ranking models for enterprise organic search content refresh prioritization across 30,000 production pages and 32 client domains.">
   <meta name="author" content="Dhanish Ladwani">
   
@@ -43,6 +43,23 @@
       --font-mono: "JetBrains Mono", Consolas, monospace;
     }
 
+    [data-theme="dark"] {
+      --primary: #90cdf4;
+      --primary-accent: #63b3ed;
+      --primary-light: #4299e1;
+      --bg: #0d1117;
+      --bg-alt: #161b22;
+      --bg-card: #161b22;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-light: #6e7681;
+      --border: #30363d;
+      --border-dark: #484f58;
+      --code-bg: #21262d;
+      --callout-bg: #1c2738;
+      --callout-border: #388bfd;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -57,6 +74,7 @@
       background-color: var(--bg-alt);
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     /* Top Navigation Bar */
@@ -87,6 +105,7 @@
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 1.25rem;
     }
 
@@ -99,6 +118,17 @@
 
     .nav-links a:hover {
       color: #63b3ed;
+    }
+
+    .theme-toggle {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #ffffff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     /* Header */
@@ -307,6 +337,11 @@
       margin-bottom: 3.5rem;
     }
 
+    [data-theme="dark"] .abstract-box {
+      background: #132338;
+      border-color: #2b6cb0;
+    }
+
     .abstract-title {
       font-family: var(--font-sans);
       font-size: 1.1rem;
@@ -323,7 +358,7 @@
     .abstract-text {
       font-size: 1.15rem;
       line-height: 1.8;
-      color: #2d3748;
+      color: var(--text);
     }
 
     .key-takeaway-box {
@@ -335,6 +370,11 @@
       color: #2c5282;
       display: flex;
       gap: 0.75rem;
+    }
+
+    [data-theme="dark"] .key-takeaway-box {
+      color: #90cdf4;
+      border-top-color: #2c5282;
     }
 
     /* Typography & Sections */
@@ -358,14 +398,14 @@
       font-family: var(--font-sans);
       font-size: 1.35rem;
       font-weight: 700;
-      color: #2d3748;
+      color: var(--text);
       margin-top: 2.25rem;
       margin-bottom: 0.75rem;
     }
 
     p {
       margin-bottom: 1.5rem;
-      color: #2d3748;
+      color: var(--text);
     }
 
     ul, ol {
@@ -393,9 +433,17 @@
       border-left-color: var(--accent);
     }
 
+    [data-theme="dark"] .callout.warning {
+      background-color: #2d2415;
+    }
+
     .callout.danger {
       background-color: #fff5f5;
       border-left-color: var(--danger);
+    }
+
+    [data-theme="dark"] .callout.danger {
+      background-color: #2d1818;
     }
 
     .callout-title {
@@ -412,7 +460,7 @@
     }
 
     .callout.danger .callout-title {
-      color: var(--danger);
+      color: #e53e3e;
     }
 
     /* Tables */
@@ -430,7 +478,7 @@
       font-family: var(--font-sans);
       font-size: 0.95rem;
       text-align: left;
-      background: #ffffff;
+      background: var(--bg-card);
     }
 
     th, td {
@@ -439,7 +487,7 @@
     }
 
     th {
-      background-color: #f7fafc;
+      background-color: var(--bg-alt);
       font-weight: 700;
       color: var(--primary);
       border-bottom: 2px solid var(--border-dark);
@@ -451,7 +499,7 @@
     }
 
     tr:hover {
-      background-color: #f8fafc;
+      background-color: var(--bg-alt);
     }
 
     .highlight-row {
@@ -459,8 +507,8 @@
       font-weight: 600;
     }
 
-    .highlight-row td {
-      color: #1a365d;
+    [data-theme="dark"] .highlight-row {
+      background-color: #1a2e47;
     }
 
     .badge-win {
@@ -478,7 +526,7 @@
     figure.paper-figure {
       margin: 3rem 0;
       text-align: center;
-      background: #ffffff;
+      background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.5rem;
@@ -507,25 +555,29 @@
 
     /* Math Formula Block */
     .math-block {
-      background: #f8fafc;
+      background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.5rem;
       margin: 1.75rem 0;
       text-align: center;
       font-size: 1.25rem;
-      color: #1a202c;
+      color: var(--text);
     }
 
-    /* Interactive Calculator Widget */
-    .calculator-card {
-      background: #ffffff;
+    /* Interactive Calculator & Explorer Cards */
+    .interactive-card {
+      background: var(--bg-card);
       border: 2px solid #bee3f8;
       border-radius: 12px;
       padding: 2rem;
       margin: 3rem 0;
       box-shadow: 0 8px 24px rgba(49, 130, 206, 0.08);
       font-family: var(--font-sans);
+    }
+
+    [data-theme="dark"] .interactive-card {
+      border-color: #2b6cb0;
     }
 
     .calc-title {
@@ -577,13 +629,13 @@
     input[type="range"] {
       width: 100%;
       height: 6px;
-      background: #e2e8f0;
+      background: var(--border);
       border-radius: 4px;
       outline: none;
     }
 
     .calc-result-box {
-      background: #f7fafc;
+      background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.5rem;
@@ -614,6 +666,40 @@
     .badge-med { background: #feebc8; color: #7b341e; }
     .badge-low { background: #c6f6d5; color: #22543d; }
 
+    /* Search & Filter Controls */
+    .filter-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input, .select-filter {
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-input { flex-grow: 1; }
+
+    /* BibTeX Block */
+    .bibtex-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text);
+      white-space: pre-wrap;
+      position: relative;
+    }
+
     /* Code Snippets */
     code {
       font-family: var(--font-mono);
@@ -622,7 +708,7 @@
       color: #805ad5;
       padding: 0.2em 0.4em;
       border-radius: 4px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border);
     }
 
     /* Footer */
@@ -671,6 +757,23 @@
       background: #2b6cb0;
       transform: translateY(-1px);
     }
+
+    /* Print Stylesheet */
+    @media print {
+      .top-nav, .toc-sidebar, .theme-toggle, .interactive-card, footer.paper-footer {
+        display: none !important;
+      }
+      .paper-layout {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      article.paper-content {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -686,9 +789,11 @@
       <a href="#data">Data</a>
       <a href="#methodology">Methodology</a>
       <a href="#results">Results</a>
-      <a href="#calculator">Interactive Demo</a>
+      <a href="#calculator">Simulator</a>
+      <a href="#explorer">Queue Explorer</a>
       <a href="#playbook">Playbook</a>
       <a href="https://github.com/dhanish0711/FlyRank-Machine-Learning-Internship" target="_blank">GitHub</a>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌓</button>
     </div>
   </nav>
 
@@ -728,11 +833,13 @@
         <li><a href="#data">2. Data Contract & River</a></li>
         <li><a href="#methodology">3. Methodology & Validation</a></li>
         <li><a href="#results">4. Empirical Benchmark Results</a></li>
-        <li><a href="#calculator">5. Interactive Risk Calculator</a></li>
-        <li><a href="#limitations">6. Limitations & Validity</a></li>
-        <li><a href="#playbook">7. Content Action Playbook</a></li>
-        <li><a href="#reproducibility">8. Reproducibility & Code</a></li>
-        <li><a href="#acknowledgments">9. Data Credit & Citations</a></li>
+        <li><a href="#calculator">5. Real-Time Risk Simulator</a></li>
+        <li><a href="#explorer">6. Live Queue Explorer</a></li>
+        <li><a href="#limitations">7. Limitations & Validity</a></li>
+        <li><a href="#playbook">8. Content Action Playbook</a></li>
+        <li><a href="#reproducibility">9. Reproducibility & Code</a></li>
+        <li><a href="#citation">10. Citations & BibTeX</a></li>
+        <li><a href="#acknowledgments">11. Data Credit</a></li>
       </ul>
     </aside>
 
@@ -977,6 +1084,17 @@
           <figcaption><strong>Figure 3: Gradient Boosting Feature Importances.</strong> Historical 90-day search impressions (42.2%) and content age (22.1%) represent the primary decision drivers.</figcaption>
         </figure>
 
+        <h3 class="sub-heading">Probability Calibration Analysis</h3>
+        <p>
+          A ranking system is only operationally trusted if its output probabilities represent true empirical risk. 
+          The reliability diagram below confirms that the Gradient Boosting decay probabilities track the ideal diagonal calibration curve:
+        </p>
+
+        <figure class="paper-figure">
+          <img src="figures/calibration_curve.png" alt="Probability Calibration Reliability Diagram">
+          <figcaption><strong>Figure 4: Reliability Diagram.</strong> Empirical vs predicted decline probabilities on held-out test clients. The model shows near-linear probability calibration.</figcaption>
+        </figure>
+
         <h3 class="sub-heading">Financial ROI & Editorial Bandwidth Savings</h3>
         <p>
           Assuming an industry-standard rewriting cost of $200 per article (3 hours of writer/editor time), replacing the baseline hand rule with Gradient Boosting saves an estimated <strong>$1,400 per client per week</strong> in avoided wasted rewrites on healthy evergreen pages:
@@ -984,18 +1102,18 @@
 
         <figure class="paper-figure">
           <img src="figures/editorial_roi_savings.png" alt="Editorial Bandwidth Savings Chart">
-          <figcaption><strong>Figure 4: Financial ROI & Avoided Wasted Spend.</strong> Comparison of wasted editorial spend on healthy false-positive pages between the baseline heuristic rule and Gradient Boosting.</figcaption>
+          <figcaption><strong>Figure 5: Financial ROI & Avoided Wasted Spend.</strong> Comparison of wasted editorial spend on healthy false-positive pages between the baseline heuristic rule and Gradient Boosting.</figcaption>
         </figure>
       </section>
 
       <!-- 5. Interactive Calculator Section -->
       <section id="calculator">
-        <h2 class="section-heading">5. Interactive Opportunity Risk Calculator</h2>
+        <h2 class="section-heading">5. Real-Time Risk Simulator</h2>
         <p>
           Test the validated model logic below. Adjust search metrics for any published article to calculate its estimated decay probability $P(\text{decline} \mid X)$, predicted priority tier, recommended action archetype, and reason code:
         </p>
 
-        <div class="calculator-card">
+        <div class="interactive-card">
           <div class="calc-title">⚡ Real-Time Content Refresh Opportunity Simulator</div>
           <div class="calc-desc">Simulates the Gradient Boosting decision boundary and operational playbook mapping.</div>
           
@@ -1035,7 +1153,7 @@
             </div>
 
             <div class="calc-result-box">
-              <div style="font-size: 0.85rem; font-weight: 700; color: #718096; text-transform: uppercase;">Predicted Decay Probability</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Predicted Decay Probability</div>
               <div id="calc-prob" class="result-score-val">0.782</div>
               <div>
                 <span id="calc-badge" class="result-badge badge-high">High Opportunity Risk</span>
@@ -1044,7 +1162,7 @@
                 <strong>Recommended Action:</strong><br>
                 <code id="calc-action">comprehensive_content_refresh</code>
               </div>
-              <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #4a5568;">
+              <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
                 <strong>Reason Code:</strong> <span id="calc-reason">stale_high_demand_decay</span>
               </div>
             </div>
@@ -1052,9 +1170,50 @@
         </div>
       </section>
 
-      <!-- 6. Limitations & Boundary Conditions -->
+      <!-- 6. Live Queue Explorer Section -->
+      <section id="explorer">
+        <h2 class="section-heading">6. Live Action Queue Explorer</h2>
+        <p>
+          Explore a live sample of the prioritized editorial review queue generated by the Gradient Boosting model. Filter by recommended action archetype or search by pseudonymized Content ID:
+        </p>
+
+        <div class="interactive-card">
+          <div class="filter-bar">
+            <input type="text" id="queue-search" class="search-input" placeholder="Search by Content ID (e.g. content_...)" oninput="filterQueue()">
+            <select id="queue-action-filter" class="select-filter" onchange="filterQueue()">
+              <option value="all">All Recommended Actions</option>
+              <option value="comprehensive_content_refresh">Comprehensive Refresh</option>
+              <option value="title_meta_rewrite">Title & Meta Rewrite</option>
+              <option value="engagement_ux_optimization">Engagement UX Optimization</option>
+              <option value="performance_monitoring">Performance Monitoring</option>
+            </select>
+          </div>
+
+          <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+            <table id="queue-table">
+              <thead>
+                <tr>
+                  <th>Content ID</th>
+                  <th>Client</th>
+                  <th>Model Prob</th>
+                  <th>Action</th>
+                  <th>Reason Code</th>
+                  <th>Impressions</th>
+                  <th>Staleness</th>
+                  <th>Position</th>
+                </tr>
+              </thead>
+              <tbody id="queue-tbody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Limitations & Boundary Conditions -->
       <section id="limitations">
-        <h2 class="section-heading">6. Limitations & Honest Claim Framing</h2>
+        <h2 class="section-heading">7. Limitations & Honest Claim Framing</h2>
         <p>
           In alignment with rigorous research standards, we document the clear boundary conditions of our findings:
         </p>
@@ -1068,9 +1227,9 @@
         </div>
       </section>
 
-      <!-- 7. Content Action Playbook -->
+      <!-- 8. Content Action Playbook -->
       <section id="playbook">
-        <h2 class="section-heading">7. Content Action Playbook & Operational Queues</h2>
+        <h2 class="section-heading">8. Content Action Playbook & Operational Queues</h2>
         <p>
           Model probability scores $P(\text{decline} \mid X)$ are operationalized into four human-reviewed action archetypes:
         </p>
@@ -1116,7 +1275,7 @@
 
         <figure class="paper-figure">
           <img src="figures/action_distribution.png" alt="Portfolio Action Distribution">
-          <figcaption><strong>Figure 5: Portfolio Action Distribution.</strong> Distribution of operational recommendations across the 30,000-page dataset.</figcaption>
+          <figcaption><strong>Figure 6: Portfolio Action Distribution.</strong> Distribution of operational recommendations across the 30,000-page dataset.</figcaption>
         </figure>
 
         <h3 class="sub-heading">The Strict No-Go Automation Protocol</h3>
@@ -1130,9 +1289,9 @@
         </div>
       </section>
 
-      <!-- 8. Reproducibility -->
+      <!-- 9. Reproducibility -->
       <section id="reproducibility">
-        <h2 class="section-heading">8. Reproducibility & Open Source Artifacts</h2>
+        <h2 class="section-heading">9. Reproducibility & Open Source Artifacts</h2>
         <p>
           All experiments, split seeds, data pipeline contracts, and model evaluation receipts are publicly accessible and fully deterministic:
         </p>
@@ -1143,9 +1302,22 @@
         </ul>
       </section>
 
-      <!-- 9. Acknowledgments & Data Credit -->
+      <!-- 10. Citation & BibTeX -->
+      <section id="citation">
+        <h2 class="section-heading">10. Citations & BibTeX</h2>
+        <p>If you build upon this methodology or use the Content Action Playbook in your research, please cite this paper:</p>
+        <div class="bibtex-box">@article{ladwani2026appliedsearch,
+  title={Applied Search Intelligence: Prioritizing Content Refresh Opportunities with Honest Machine Learning Models},
+  author={Ladwani, Dhanish},
+  journal={FlyRank Applied Machine Learning Capstone Papers},
+  year={2026},
+  url={https://dhanish0711.github.io/FlyRank-Machine-Learning-Internship/}
+}</div>
+      </section>
+
+      <!-- 11. Acknowledgments & Data Credit -->
       <section id="acknowledgments">
-        <h2 class="section-heading">9. Acknowledgments & Data Credit</h2>
+        <h2 class="section-heading">11. Acknowledgments & Data Credit</h2>
         <p>
           This research was conducted as part of the <strong>FlyRank Machine Learning Internship Track</strong>. 
           We express our gratitude to the FlyRank engineering team for providing the pseudonymized enterprise search performance warehouse release.
@@ -1172,6 +1344,56 @@
   </footer>
 
   <script>
+    // Theme Toggle Logic
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    }
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Queue Data Injection
+    const queueData = [{"id": "content_b16bd7307b39", "client": "client_7f2253d7e2", "prob": 0.855, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4590, "days": 194, "pos": 31.0, "ctr": 0.0}, {"id": "content_72496874f806", "client": "client_4ec9599fc2", "prob": 0.83, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 821, "days": 301, "pos": 5.8, "ctr": 0.24}, {"id": "content_928af3e22c80", "client": "client_7f2253d7e2", "prob": 0.826, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1697, "days": 193, "pos": 15.8, "ctr": 0.12}, {"id": "content_5feee3994adb", "client": "client_7f2253d7e2", "prob": 0.825, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 7812, "days": 194, "pos": 39.0, "ctr": 0.01}, {"id": "content_bdbec75c1148", "client": "client_7f2253d7e2", "prob": 0.804, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1316, "days": 194, "pos": 21.8, "ctr": 0.15}, {"id": "content_6226ee6adc91", "client": "client_d029fa3a95", "prob": 0.788, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 545, "days": 183, "pos": 17.8, "ctr": 0.18}, {"id": "content_e3ff1b093148", "client": "client_d029fa3a95", "prob": 0.783, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1408, "days": 183, "pos": 7.8, "ctr": 0.28}, {"id": "content_c2d929d83eaa", "client": "client_7f2253d7e2", "prob": 0.77, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 7558, "days": 193, "pos": 17.9, "ctr": 0.2}, {"id": "content_074ba6ead17b", "client": "client_d029fa3a95", "prob": 0.762, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 533, "days": 183, "pos": 48.0, "ctr": 0.0}, {"id": "content_77d4d5930e5e", "client": "client_7f2253d7e2", "prob": 0.753, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 828, "days": 194, "pos": 18.6, "ctr": 0.24}, {"id": "content_7f116ae1f6f5", "client": "client_9400f1b21c", "prob": 0.745, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 954, "days": 301, "pos": 9.0, "ctr": 0.42}, {"id": "content_fe16a55cd13d", "client": "client_7f2253d7e2", "prob": 0.72, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4556, "days": 194, "pos": 16.4, "ctr": 0.33}, {"id": "content_ecb6215e79fd", "client": "client_7f2253d7e2", "prob": 0.709, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4429, "days": 194, "pos": 25.3, "ctr": 0.38}, {"id": "content_1bfaa38ff26c", "client": "client_7f2253d7e2", "prob": 0.708, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 25715, "days": 194, "pos": 22.2, "ctr": 0.23}, {"id": "content_7368877ea310", "client": "client_7f2253d7e2", "prob": 0.705, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 59472, "days": 194, "pos": 24.8, "ctr": 0.13}, {"id": "content_cf56e2e2e282", "client": "client_7f2253d7e2", "prob": 0.666, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 61678, "days": 194, "pos": 19.7, "ctr": 0.15}, {"id": "content_a37ce8ddc090", "client": "client_7f2253d7e2", "prob": 0.936, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1039, "days": 106, "pos": 2.3, "ctr": 0.0}, {"id": "content_9b28cf5ae4f3", "client": "client_f369cb89fc", "prob": 0.93, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1620, "days": 106, "pos": 1.1, "ctr": 0.06}, {"id": "content_0868e82484db", "client": "client_7f2253d7e2", "prob": 0.928, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1149, "days": 106, "pos": 4.1, "ctr": 0.0}, {"id": "content_b08562686d22", "client": "client_f369cb89fc", "prob": 0.928, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2846, "days": 106, "pos": 2.0, "ctr": 0.14}, {"id": "content_96244e722aa7", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 252, "days": 20, "pos": 8.4, "ctr": 0.0}, {"id": "content_5cda32af644c", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 720, "days": 104, "pos": 3.0, "ctr": 0.0}, {"id": "content_ffeed86ef360", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 383, "days": 104, "pos": 1.7, "ctr": 0.0}, {"id": "content_f552433bab3c", "client": "client_3fdba35f04", "prob": 0.925, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 337, "days": 104, "pos": 1.8, "ctr": 0.0}, {"id": "content_323d0bdf7077", "client": "client_f369cb89fc", "prob": 0.925, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2018, "days": 106, "pos": 4.6, "ctr": 0.05}, {"id": "content_4d76cdb3387b", "client": "client_3fdba35f04", "prob": 0.924, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1597, "days": 104, "pos": 2.7, "ctr": 0.13}, {"id": "content_861205133cbc", "client": "client_3fdba35f04", "prob": 0.919, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 332, "days": 104, "pos": 4.1, "ctr": 0.0}, {"id": "content_1c539e7bac93", "client": "client_3fdba35f04", "prob": 0.918, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 618, "days": 104, "pos": 3.6, "ctr": 0.0}, {"id": "content_26d48a980581", "client": "client_f369cb89fc", "prob": 0.916, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1266, "days": 106, "pos": 4.6, "ctr": 0.0}, {"id": "content_e04eb9549989", "client": "client_3fdba35f04", "prob": 0.916, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3393, "days": 104, "pos": 3.6, "ctr": 0.09}, {"id": "content_0d9c0ed65840", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 382, "days": 104, "pos": 0.8, "ctr": 0.0}, {"id": "content_ab11e71992b7", "client": "client_8722616204", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 462, "days": 8, "pos": 8.5, "ctr": 0.0}, {"id": "content_4500346533b1", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 705, "days": 104, "pos": 3.3, "ctr": 0.0}, {"id": "content_2744dcacbe42", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 353, "days": 104, "pos": 3.6, "ctr": 0.0}, {"id": "content_83bc621f73e2", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 403, "days": 20, "pos": 9.7, "ctr": 0.0}, {"id": "content_b84cb2300d9d", "client": "client_f369cb89fc", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 388, "days": 106, "pos": 6.0, "ctr": 0.0}, {"id": "content_ea733ea77a8f", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 397, "days": 20, "pos": 4.1, "ctr": 0.0}, {"id": "content_91f339aee9f5", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 657, "days": 20, "pos": 7.7, "ctr": 0.0}, {"id": "content_b893db8d7619", "client": "client_3fdba35f04", "prob": 0.913, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 818, "days": 104, "pos": 4.5, "ctr": 0.0}, {"id": "content_829c68e60d13", "client": "client_f369cb89fc", "prob": 0.912, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 307, "days": 106, "pos": 4.9, "ctr": 0.0}, {"id": "content_04f9c8cfb061", "client": "client_3fdba35f04", "prob": 0.909, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1914, "days": 104, "pos": 3.5, "ctr": 0.1}, {"id": "content_66458ac1b739", "client": "client_8527a891e2", "prob": 0.909, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 6822, "days": 102, "pos": 2.9, "ctr": 0.03}, {"id": "content_a8680d500da8", "client": "client_7f2253d7e2", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1710, "days": 106, "pos": 9.7, "ctr": 0.06}, {"id": "content_1f7638fecdc1", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 565, "days": 104, "pos": 2.3, "ctr": 0.0}, {"id": "content_a025e9373add", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 351, "days": 104, "pos": 2.0, "ctr": 0.0}, {"id": "content_eb343bba87f8", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 313, "days": 104, "pos": 2.5, "ctr": 0.0}, {"id": "content_b005f46f2e4c", "client": "client_3fdba35f04", "prob": 0.907, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 673, "days": 104, "pos": 2.7, "ctr": 0.15}, {"id": "content_e76ac7fed711", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1877, "days": 104, "pos": 5.8, "ctr": 0.05}, {"id": "content_9b6df29f7889", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1622, "days": 104, "pos": 3.1, "ctr": 0.12}, {"id": "content_1b51115391a3", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3221, "days": 104, "pos": 9.5, "ctr": 0.0}];
+
+    function renderQueue(items) {
+      const tbody = document.getElementById('queue-tbody');
+      tbody.innerHTML = '';
+      if (items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No matching content items found.</td></tr>';
+        return;
+      }
+      items.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><code>${item.id}</code></td>
+          <td>${item.client}</td>
+          <td><strong>${item.prob.toFixed(3)}</strong></td>
+          <td><code>${item.action}</code></td>
+          <td><span style="font-size: 0.85rem; color: var(--text-muted);">${item.reason}</span></td>
+          <td>${item.imp.toLocaleString()}</td>
+          <td>${item.days}d</td>
+          <td>${item.pos.toFixed(1)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterQueue() {
+      const query = document.getElementById('queue-search').value.toLowerCase().trim();
+      const actionFilter = document.getElementById('queue-action-filter').value;
+
+      const filtered = queueData.filter(item => {
+        const matchQuery = item.id.toLowerCase().includes(query) || item.client.toLowerCase().includes(query);
+        const matchAction = (actionFilter === 'all') || (item.action === actionFilter);
+        return matchQuery && matchAction;
+      });
+      renderQueue(filtered);
+    }
+
+    // Simulator Logic
     function updateCalculator() {
       const imp = parseFloat(document.getElementById('input-imp').value);
       const days = parseFloat(document.getElementById('input-days').value);
@@ -1220,8 +1442,10 @@
         reasonEl.innerText = 'low_priority_content';
       }
     }
+
     window.onload = function() {
       updateCalculator();
+      renderQueue(queueData);
     };
   </script>
 
