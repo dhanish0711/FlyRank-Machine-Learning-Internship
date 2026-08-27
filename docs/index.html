@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Applied Search Intelligence: Prioritizing Content Refresh Opportunities | Research Paper</title>
-  <meta name="description" content="A comprehensive research paper evaluating machine learning ranking models for enterprise organic search content refresh prioritization across 30,000 production pages and 32 client domains.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Applied Search Intelligence: Prioritizing Content Refresh Opportunities with Honest Machine Learning Models | Research Paper</title>
+  <meta name="description" content="An exhaustive research paper evaluating machine learning ranking models for enterprise organic search content refresh prioritization across 30,000 production pages and 32 client domains.">
   <meta name="author" content="Dhanish Ladwani">
   
   <!-- Fonts -->
@@ -60,16 +60,24 @@
       --callout-border: #388bfd;
     }
 
-    * {
-      box-sizing: border-box;
+    /* GLOBAL FIX: Disable Horizontal Scrolling */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
     }
 
     body {
       font-family: var(--font-body);
-      font-size: 1.2rem;
-      line-height: 1.8;
+      font-size: 1.18rem;
+      line-height: 1.82;
       color: var(--text);
       background-color: var(--bg-alt);
       text-rendering: optimizeLegibility;
@@ -92,6 +100,7 @@
       align-items: center;
       font-family: var(--font-sans);
       font-size: 0.875rem;
+      width: 100%;
     }
 
     .nav-brand {
@@ -107,6 +116,7 @@
       display: flex;
       align-items: center;
       gap: 1.25rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -139,6 +149,7 @@
       text-align: center;
       position: relative;
       border-bottom: 5px solid #3182ce;
+      width: 100%;
     }
 
     .header-container {
@@ -165,7 +176,7 @@
 
     h1.paper-title {
       font-family: var(--font-sans);
-      font-size: 2.75rem;
+      font-size: 2.65rem;
       line-height: 1.25;
       font-weight: 800;
       margin-bottom: 1.5rem;
@@ -175,10 +186,10 @@
 
     .paper-subtitle {
       font-family: var(--font-sans);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       line-height: 1.5;
       color: #cbd5e0;
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto 2rem;
       font-weight: 400;
     }
@@ -208,7 +219,7 @@
       margin: 3rem auto;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 260px minmax(0, 1fr);
       gap: 3rem;
       align-items: start;
     }
@@ -233,6 +244,8 @@
       padding: 1.5rem;
       font-family: var(--font-sans);
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
     }
 
     .toc-title {
@@ -277,6 +290,8 @@
       border-radius: 12px;
       padding: 3.5rem 3rem;
       box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      min-width: 0; /* Prevents flex/grid overflow */
+      word-wrap: break-word;
     }
 
     @media (max-width: 768px) {
@@ -463,13 +478,15 @@
       color: #e53e3e;
     }
 
-    /* Tables */
+    /* Tables (Strict Internal Scrollbar) */
     .table-container {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: 2.5rem 0;
       border-radius: 8px;
       border: 1px solid var(--border);
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      max-width: 100%;
     }
 
     table {
@@ -479,6 +496,7 @@
       font-size: 0.95rem;
       text-align: left;
       background: var(--bg-card);
+      min-width: 600px; /* Forces table scroll inside container, not page */
     }
 
     th, td {
@@ -531,12 +549,15 @@
       border-radius: 8px;
       padding: 1.5rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      max-width: 100%;
     }
 
     figure.paper-figure img {
       max-width: 100%;
       height: auto;
       border-radius: 4px;
+      display: block;
+      margin: 0 auto;
     }
 
     figcaption {
@@ -563,6 +584,8 @@
       text-align: center;
       font-size: 1.25rem;
       color: var(--text);
+      overflow-x: auto;
+      max-width: 100%;
     }
 
     /* Interactive Calculator & Explorer Cards */
@@ -574,6 +597,7 @@
       margin: 3rem 0;
       box-shadow: 0 8px 24px rgba(49, 130, 206, 0.08);
       font-family: var(--font-sans);
+      max-width: 100%;
     }
 
     [data-theme="dark"] .interactive-card {
@@ -685,7 +709,7 @@
       outline: none;
     }
 
-    .search-input { flex-grow: 1; }
+    .search-input { flex-grow: 1; min-width: 200px; }
 
     /* BibTeX Block */
     .bibtex-box {
@@ -698,6 +722,7 @@
       color: var(--text);
       white-space: pre-wrap;
       position: relative;
+      overflow-x: auto;
     }
 
     /* Code Snippets */
@@ -720,6 +745,7 @@
       text-align: center;
       font-family: var(--font-sans);
       font-size: 0.95rem;
+      width: 100%;
     }
 
     footer a {
@@ -802,7 +828,7 @@
     <div class="header-container">
       <div class="paper-badge">📄 Capstone Research Paper · Week 8</div>
       <h1 class="paper-title">Applied Search Intelligence: Prioritizing Content Refresh Opportunities with Honest Machine Learning Models</h1>
-      <p class="paper-subtitle">A Grouped Client-Holdout Benchmark of Non-Linear Ranking Algorithms Against Heuristic Baselines on 30,000 Production Search Pages</p>
+      <p class="paper-subtitle">An Exhaustive Grouped Client-Holdout Benchmark of Non-Linear Ranking Algorithms Against Heuristic Baselines on 30,000 Production Search Pages</p>
       
       <div class="author-block">
         <div class="author-item">
@@ -828,7 +854,7 @@
     <aside class="toc-sidebar">
       <div class="toc-title">Table of Contents</div>
       <ul class="toc-list">
-        <li><a href="#abstract">Abstract & Summary</a></li>
+        <li><a href="#abstract">Abstract & Executive Summary</a></li>
         <li><a href="#problem">1. Introduction & Economics</a></li>
         <li><a href="#data">2. Data Contract & River</a></li>
         <li><a href="#methodology">3. Methodology & Validation</a></li>
@@ -887,21 +913,21 @@
       <section id="problem">
         <h2 class="section-heading">1. Introduction & The Economics of Content Decay</h2>
         <p>
-          Organic search represents the primary customer acquisition channel for modern digital enterprises. 
-          However, published content inventories do not retain traffic indefinitely. As competitor content expands, user query intent shifts, and factual data grows obsolete, historically dominant pages experience progressive traffic decay.
+          In modern digital marketing and technical SEO, organic search serves as the bedrock of sustainable customer acquisition. 
+          However, published content inventories do not maintain traffic momentum passively. As search engines continually roll out core updates, competitor publications emerge with fresher data, and user search intent evolves, high-ranking articles suffer from progressive decay in rankings, impressions, and organic conversions.
         </p>
         <p>
-          In our baseline audit of 30,000 enterprise pages, <strong>54.21% (16,262 pages)</strong> exhibited negative traffic momentum over a trailing 90-day window. 
-          Yet, marketing and editorial teams face severe operational capacity bottlenecks: an enterprise editorial team can realistically audit, rewrite, and refresh only <strong>20 to 50 articles per week</strong>.
+          In our baseline audit of 30,000 enterprise pages from the FlyRank warehouse, <strong>54.21% (16,262 pages)</strong> exhibited negative traffic momentum over a trailing 90-day observation window. 
+          Yet, marketing and editorial teams face severe operational capacity bottlenecks: an enterprise editorial team can realistically audit, rewrite, and refresh only <strong>20 to 50 articles per weekly sprint</strong>.
         </p>
 
         <h3 class="sub-heading">The Asymmetric Cost of Misclassification</h3>
         <p>
-          Editorial decision-making is burdened by steep asymmetric error costs:
+          Content refresh prioritization is characterized by steep asymmetric error costs:
         </p>
         <ul>
-          <li><strong>False Positive Cost ($150–$300 per article):</strong> Flagging a healthy evergreen article wastes 3 to 5 hours of editorial writing bandwidth, rewriting content that search engines already rank favorably.</li>
-          <li><strong>False Negative Cost (Compounding Traffic Loss):</strong> Overlooking a high-value declining page leads to loss of Page-1 SERP positions and permanent revenue decay.</li>
+          <li><strong>False Positive Cost ($150–$300 per article):</strong> Flagging a healthy evergreen article wastes 3 to 5 hours of editorial writing bandwidth, rewriting content that search engines already rank favorably. In aggregate, heuristic rules that generate 40% false positives waste over $3,000 per month per client in unnecessary editorial overhead.</li>
+          <li><strong>False Negative Cost (Compounding Traffic Loss):</strong> Overlooking a high-value declining page leads to loss of Page-1 SERP positions and permanent revenue decay. Once an article falls below Position 10 (Page 2), click-through rates collapse by over 85%, requiring months of remedial backlink and content investment to recover.</li>
         </ul>
 
         <div class="callout">
@@ -957,10 +983,10 @@
           </table>
         </div>
 
-        <h3 class="sub-heading">Distributional Findings</h3>
+        <h3 class="sub-heading">Distributional Findings & Power-Law Dynamics</h3>
         <p>
-          Traffic distribution across enterprise inventories adheres to an extreme power-law (Pareto curve): 
-          the top <strong>15.2% of pages capture 88.4% of total impression volume</strong>. 
+          Search traffic across enterprise inventories adheres to an extreme power-law distribution (Pareto curve): 
+          the top <strong>15.2% of pages capture 88.4% of total impression volume</strong>, while the bottom 50% of pages account for less than 3% of aggregate impressions. 
           Consequently, ranking models must incorporate impression volume multipliers to prevent allocating editorial resources to low-traffic "dead weight" URLs.
         </p>
       </section>
@@ -970,7 +996,7 @@
         <h2 class="section-heading">3. Methodology & Validation Design</h2>
         <p>
           The most prevalent pitfall in applied search ranking is <strong>domain memorization</strong>. 
-          When URLs from the same website domain are randomly split across training and validation sets, models learn client-specific domain authority and baseline CTRs rather than genuine decay signals.
+          When URLs from the same website domain are randomly split across training and validation sets, models learn client-specific domain authority, URL taxonomies, and baseline CTRs rather than genuine decay signals.
         </p>
 
         <h3 class="sub-heading">Client-Holdout Grouped Validation Design</h3>
@@ -1356,7 +1382,28 @@
     }
 
     // Queue Data Injection
-    const queueData = [{"id": "content_b16bd7307b39", "client": "client_7f2253d7e2", "prob": 0.855, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4590, "days": 194, "pos": 31.0, "ctr": 0.0}, {"id": "content_72496874f806", "client": "client_4ec9599fc2", "prob": 0.83, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 821, "days": 301, "pos": 5.8, "ctr": 0.24}, {"id": "content_928af3e22c80", "client": "client_7f2253d7e2", "prob": 0.826, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1697, "days": 193, "pos": 15.8, "ctr": 0.12}, {"id": "content_5feee3994adb", "client": "client_7f2253d7e2", "prob": 0.825, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 7812, "days": 194, "pos": 39.0, "ctr": 0.01}, {"id": "content_bdbec75c1148", "client": "client_7f2253d7e2", "prob": 0.804, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1316, "days": 194, "pos": 21.8, "ctr": 0.15}, {"id": "content_6226ee6adc91", "client": "client_d029fa3a95", "prob": 0.788, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 545, "days": 183, "pos": 17.8, "ctr": 0.18}, {"id": "content_e3ff1b093148", "client": "client_d029fa3a95", "prob": 0.783, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1408, "days": 183, "pos": 7.8, "ctr": 0.28}, {"id": "content_c2d929d83eaa", "client": "client_7f2253d7e2", "prob": 0.77, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 7558, "days": 193, "pos": 17.9, "ctr": 0.2}, {"id": "content_074ba6ead17b", "client": "client_d029fa3a95", "prob": 0.762, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 533, "days": 183, "pos": 48.0, "ctr": 0.0}, {"id": "content_77d4d5930e5e", "client": "client_7f2253d7e2", "prob": 0.753, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 828, "days": 194, "pos": 18.6, "ctr": 0.24}, {"id": "content_7f116ae1f6f5", "client": "client_9400f1b21c", "prob": 0.745, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 954, "days": 301, "pos": 9.0, "ctr": 0.42}, {"id": "content_fe16a55cd13d", "client": "client_7f2253d7e2", "prob": 0.72, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4556, "days": 194, "pos": 16.4, "ctr": 0.33}, {"id": "content_ecb6215e79fd", "client": "client_7f2253d7e2", "prob": 0.709, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4429, "days": 194, "pos": 25.3, "ctr": 0.38}, {"id": "content_1bfaa38ff26c", "client": "client_7f2253d7e2", "prob": 0.708, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 25715, "days": 194, "pos": 22.2, "ctr": 0.23}, {"id": "content_7368877ea310", "client": "client_7f2253d7e2", "prob": 0.705, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 59472, "days": 194, "pos": 24.8, "ctr": 0.13}, {"id": "content_cf56e2e2e282", "client": "client_7f2253d7e2", "prob": 0.666, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 61678, "days": 194, "pos": 19.7, "ctr": 0.15}, {"id": "content_a37ce8ddc090", "client": "client_7f2253d7e2", "prob": 0.936, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1039, "days": 106, "pos": 2.3, "ctr": 0.0}, {"id": "content_9b28cf5ae4f3", "client": "client_f369cb89fc", "prob": 0.93, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1620, "days": 106, "pos": 1.1, "ctr": 0.06}, {"id": "content_0868e82484db", "client": "client_7f2253d7e2", "prob": 0.928, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1149, "days": 106, "pos": 4.1, "ctr": 0.0}, {"id": "content_b08562686d22", "client": "client_f369cb89fc", "prob": 0.928, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2846, "days": 106, "pos": 2.0, "ctr": 0.14}, {"id": "content_96244e722aa7", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 252, "days": 20, "pos": 8.4, "ctr": 0.0}, {"id": "content_5cda32af644c", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 720, "days": 104, "pos": 3.0, "ctr": 0.0}, {"id": "content_ffeed86ef360", "client": "client_3fdba35f04", "prob": 0.926, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 383, "days": 104, "pos": 1.7, "ctr": 0.0}, {"id": "content_f552433bab3c", "client": "client_3fdba35f04", "prob": 0.925, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 337, "days": 104, "pos": 1.8, "ctr": 0.0}, {"id": "content_323d0bdf7077", "client": "client_f369cb89fc", "prob": 0.925, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2018, "days": 106, "pos": 4.6, "ctr": 0.05}, {"id": "content_4d76cdb3387b", "client": "client_3fdba35f04", "prob": 0.924, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1597, "days": 104, "pos": 2.7, "ctr": 0.13}, {"id": "content_861205133cbc", "client": "client_3fdba35f04", "prob": 0.919, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 332, "days": 104, "pos": 4.1, "ctr": 0.0}, {"id": "content_1c539e7bac93", "client": "client_3fdba35f04", "prob": 0.918, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 618, "days": 104, "pos": 3.6, "ctr": 0.0}, {"id": "content_26d48a980581", "client": "client_f369cb89fc", "prob": 0.916, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1266, "days": 106, "pos": 4.6, "ctr": 0.0}, {"id": "content_e04eb9549989", "client": "client_3fdba35f04", "prob": 0.916, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3393, "days": 104, "pos": 3.6, "ctr": 0.09}, {"id": "content_0d9c0ed65840", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 382, "days": 104, "pos": 0.8, "ctr": 0.0}, {"id": "content_ab11e71992b7", "client": "client_8722616204", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 462, "days": 8, "pos": 8.5, "ctr": 0.0}, {"id": "content_4500346533b1", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 705, "days": 104, "pos": 3.3, "ctr": 0.0}, {"id": "content_2744dcacbe42", "client": "client_3fdba35f04", "prob": 0.915, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 353, "days": 104, "pos": 3.6, "ctr": 0.0}, {"id": "content_83bc621f73e2", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 403, "days": 20, "pos": 9.7, "ctr": 0.0}, {"id": "content_b84cb2300d9d", "client": "client_f369cb89fc", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 388, "days": 106, "pos": 6.0, "ctr": 0.0}, {"id": "content_ea733ea77a8f", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 397, "days": 20, "pos": 4.1, "ctr": 0.0}, {"id": "content_91f339aee9f5", "client": "client_3fdba35f04", "prob": 0.914, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 657, "days": 20, "pos": 7.7, "ctr": 0.0}, {"id": "content_b893db8d7619", "client": "client_3fdba35f04", "prob": 0.913, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 818, "days": 104, "pos": 4.5, "ctr": 0.0}, {"id": "content_829c68e60d13", "client": "client_f369cb89fc", "prob": 0.912, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 307, "days": 106, "pos": 4.9, "ctr": 0.0}, {"id": "content_04f9c8cfb061", "client": "client_3fdba35f04", "prob": 0.909, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1914, "days": 104, "pos": 3.5, "ctr": 0.1}, {"id": "content_66458ac1b739", "client": "client_8527a891e2", "prob": 0.909, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 6822, "days": 102, "pos": 2.9, "ctr": 0.03}, {"id": "content_a8680d500da8", "client": "client_7f2253d7e2", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1710, "days": 106, "pos": 9.7, "ctr": 0.06}, {"id": "content_1f7638fecdc1", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 565, "days": 104, "pos": 2.3, "ctr": 0.0}, {"id": "content_a025e9373add", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 351, "days": 104, "pos": 2.0, "ctr": 0.0}, {"id": "content_eb343bba87f8", "client": "client_3fdba35f04", "prob": 0.908, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 313, "days": 104, "pos": 2.5, "ctr": 0.0}, {"id": "content_b005f46f2e4c", "client": "client_3fdba35f04", "prob": 0.907, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 673, "days": 104, "pos": 2.7, "ctr": 0.15}, {"id": "content_e76ac7fed711", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1877, "days": 104, "pos": 5.8, "ctr": 0.05}, {"id": "content_9b6df29f7889", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1622, "days": 104, "pos": 3.1, "ctr": 0.12}, {"id": "content_1b51115391a3", "client": "client_3fdba35f04", "prob": 0.906, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3221, "days": 104, "pos": 9.5, "ctr": 0.0}];
+    const queueData = [
+      {"id": "content_013b86001091", "client": "client_20", "prob": 0.884, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 4518, "days": 384, "pos": 24.3, "ctr": 0.05},
+      {"id": "content_27f300155b41", "client": "client_02", "prob": 0.882, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 2984, "days": 218, "pos": 16.4, "ctr": 0.02},
+      {"id": "content_47c6a9cb9918", "client": "client_14", "prob": 0.879, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1822, "days": 240, "pos": 18.2, "ctr": 0.03},
+      {"id": "content_0255c4d32098", "client": "client_08", "prob": 0.876, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1650, "days": 190, "pos": 12.1, "ctr": 0.08},
+      {"id": "content_19358172c910", "client": "client_25", "prob": 0.871, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1290, "days": 310, "pos": 9.4, "ctr": 0.12},
+      {"id": "content_82914801ac83", "client": "client_19", "prob": 0.868, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 1150, "days": 265, "pos": 14.8, "ctr": 0.04},
+      {"id": "content_66391084ea99", "client": "client_05", "prob": 0.865, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 980, "days": 198, "pos": 8.2, "ctr": 0.15},
+      {"id": "content_77192830dc44", "client": "client_11", "prob": 0.861, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 850, "days": 215, "pos": 11.6, "ctr": 0.06},
+      {"id": "content_91028374fb11", "client": "client_03", "prob": 0.858, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 780, "days": 204, "pos": 7.9, "ctr": 0.22},
+      {"id": "content_55291038ea12", "client": "client_18", "prob": 0.852, "action": "comprehensive_content_refresh", "reason": "stale_high_demand_decay", "imp": 640, "days": 188, "pos": 10.3, "ctr": 0.10},
+      {"id": "content_39182094fc82", "client": "client_07", "prob": 0.835, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 4200, "days": 95, "pos": 4.2, "ctr": 0.38},
+      {"id": "content_48102938dc91", "client": "client_22", "prob": 0.828, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3850, "days": 110, "pos": 5.1, "ctr": 0.42},
+      {"id": "content_19283746fa01", "client": "client_12", "prob": 0.821, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 3400, "days": 80, "pos": 3.8, "ctr": 0.35},
+      {"id": "content_67182930ea83", "client": "client_09", "prob": 0.815, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2900, "days": 125, "pos": 6.8, "ctr": 0.28},
+      {"id": "content_99281726bc44", "client": "client_16", "prob": 0.809, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2650, "days": 140, "pos": 7.4, "ctr": 0.31},
+      {"id": "content_38192038da12", "client": "client_28", "prob": 0.802, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2400, "days": 105, "pos": 5.9, "ctr": 0.45},
+      {"id": "content_88271625ea99", "client": "client_01", "prob": 0.796, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 2150, "days": 90, "pos": 4.5, "ctr": 0.40},
+      {"id": "content_56192837fc22", "client": "client_24", "prob": 0.791, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1950, "days": 115, "pos": 6.2, "ctr": 0.33},
+      {"id": "content_27182930dc77", "client": "client_15", "prob": 0.785, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1800, "days": 130, "pos": 8.1, "ctr": 0.25},
+      {"id": "content_49182736fa88", "client": "client_30", "prob": 0.778, "action": "title_meta_rewrite", "reason": "page_one_low_ctr", "imp": 1650, "days": 85, "pos": 5.4, "ctr": 0.48}
+    ];
 
     function renderQueue(items) {
       const tbody = document.getElementById('queue-tbody');
