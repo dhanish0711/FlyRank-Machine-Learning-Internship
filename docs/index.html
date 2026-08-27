@@ -7,11 +7,17 @@
   <meta name="description" content="A comprehensive research paper evaluating machine learning ranking models for enterprise organic search content refresh prioritization across 30,000 production pages and 32 client domains.">
   <meta name="author" content="Dhanish Ladwani">
   
-  <!-- Fonts & Math -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
+  <!-- KaTeX for beautiful math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '$', right: '$', display: false}, {left: '\\(', right: '\\)', display: false}]});"></script>
+
   <style>
     :root {
       --primary: #0f2b48;
@@ -504,11 +510,10 @@
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.25rem;
+      padding: 1.5rem;
       margin: 1.75rem 0;
       text-align: center;
-      font-family: "Times New Roman", Times, serif;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: #1a202c;
     }
 
@@ -769,7 +774,7 @@
         </p>
 
         <div class="math-block">
-          \(	ext{Precision}@K = rac{1}{K} \sum_{i=1}^{K} y_{(i)}, \quad 	ext{where } \hat{P}_{(1)} \ge \hat{P}_{(2)} \ge \dots \ge \hat{P}_{(K)}\)
+          \[ \text{Precision}@K = \frac{1}{K} \sum_{i=1}^{K} y_{(i)}, \quad \text{where } \hat{P}_{(1)} \ge \hat{P}_{(2)} \ge \dots \ge \hat{P}_{(K)} \]
         </div>
 
         <h3 class="sub-heading">Leakage Audit & Feature Hygiene</h3>
@@ -890,7 +895,7 @@
       <section id="playbook">
         <h2 class="section-heading">6. Content Action Playbook & Operational Queues</h2>
         <p>
-          Model probability scores $P(	ext{decline} \mid X)$ are operationalized into four human-reviewed action archetypes:
+          Model probability scores $P(\text{decline} \mid X)$ are operationalized into four human-reviewed action archetypes:
         </p>
 
         <div class="table-container">
@@ -906,7 +911,7 @@
             <tbody>
               <tr>
                 <td><strong><code>comprehensive_content_refresh</code></strong></td>
-                <td>Prob $\ge 0.65$ & Stale $\ge 180	ext{d}$ & Imp $\ge 500$</td>
+                <td>Prob $\ge 0.65$ & Stale $\ge 180\text{d}$ & Imp $\ge 500$</td>
                 <td><code>stale_high_demand_decay</code></td>
                 <td>Conduct complete factual update, expand thin sections with recent developments, refresh internal links.</td>
               </tr>
